@@ -32,7 +32,7 @@ RUN cd /home/hubot/node_modules/hubot-hangupsjs && \
 	npm install && \
 	coffee -c /home/hubot/node_modules/hubot-hangupsjs/src/*.coffee && \
 	cd /home/hubot
-echo This is a pen
+
 CMD node -e "console.log(JSON.stringify('$EXTERNAL_SCRIPTS'.split(',')))" > external-scripts.json && \
 	npm install $(node -e "console.log('$EXTERNAL_SCRIPTS'.split(',').join(' '))") && \
 	bin/hubot -n $BOT_NAME -a hangupsjs
