@@ -1,5 +1,5 @@
 FROM node:4.8.3
-MAINTAINER bryceit
+MAINTAINER bryceitnew
 
 RUN npm install -g coffee-script yo generator-hubot  &&  \
 	useradd hubot -m
