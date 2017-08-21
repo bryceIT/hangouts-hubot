@@ -28,10 +28,14 @@ USER root
 RUN chown hubot:hubot -R /home/hubot/node_modules/hubot-hangupsjs
 USER hubot
 
-RUN cd /home/hubot/node_modules/hubot-hangupsjs && \
-	npm install && \
-	coffee -c /home/hubot/node_modules/hubot-hangupsjs/src/*.coffee && \
-	cd /home/hubot
+# this line to try and fix below which generated an error
+RUN npm install hubot-hangupsjs
+
+# RUN cd /home/hubot/node_modules/hubot-hangupsjs && \
+# 	npm install && \
+# 	coffee -c /home/hubot/node_modules/hubot-hangupsjs/src/*.coffee && \
+# 	cd /home/hubot
+
 
 CMD node -e "console.log(JSON.stringify('$EXTERNAL_SCRIPTS'.split(',')))" > external-scripts.json && \
 	npm install $(node -e "console.log('$EXTERNAL_SCRIPTS'.split(',').join(' '))") && \
